@@ -20,3 +20,26 @@
 .App-link {
   color: #09d3ac;
 }
+
+.cadastro-form{
+  width :100%;
+  max-width: 500px;
+  padding: 15px;
+}
+
+.tabela-empresas{
+  width :100%;
+  max-width: 500px;
+  padding: 15px;
+  margin-left: 10px;
+}
+.titulo{
+  margin-left: 10px;
+}
+
+.tabela-empresas{
+  width :100%;
+  max-width: 500px;
+  padding: 15px;
+  margin-left: 10px;
+}
