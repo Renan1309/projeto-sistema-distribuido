@@ -66,4 +66,32 @@
 .a:focus{
   color: white;
   text-decoration: none;
+
+}
+
+.fundo-tela{
+  background: #000 url('./Image/logotrabalho.png')no-repeat;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.card-venda{
+  width :200%;
+  max-width: 1000px;
+  padding: 20px 2%;
+  
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.card-component{
+  
+  padding: 20px 2%;
+  
+}
+
+.h2venda{
+  margin-left: auto;
+  margin-right: auto;
 }

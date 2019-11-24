@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
+import {Link} from 'react-router-dom';
+import { Table , Button , } from 'react-bootstrap';
 import axios from 'axios';
-import { Table , Button} from 'react-bootstrap';
 
 
 
@@ -10,9 +11,10 @@ class Listaclientes extends Component {
         listclient: [ ]
        
     };
+    
     componentDidMount(){
         console.log('Entrou no DID MOUNT');
-        axios.get('http://localhost:7000/clientes')
+        axios.get('http://localhost:7000/clientes-oficial')
         .then(function (response) {
           // handle success
           console.log(response.data);
@@ -25,6 +27,7 @@ class Listaclientes extends Component {
 
     }
     render(){
+      let idcpf ;
 
         return(
             <>
@@ -33,19 +36,27 @@ class Listaclientes extends Component {
                 <thead>
                   <tr>
                     
-                    <th>Email</th>
                     <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Dividas</th>
                   
                   </tr>
                 </thead>
                    { this.state.listclient.map(client =>
                       <tbody>
                         <tr>
-                           <th > {client.nome}</th>
-                           <th>{client.email}
+                           <th > {client.cliente_nome}</th>
+                           <th>{client.cliente_email}</th>
+                           <th>{client.cliente_cpf}</th>
+                          <th> 
+                          <Link to={{pathname : "/dividas",
+                                     id: `${client.cliente_cpf}`,
+                                     nome: `${client.cliente_nome}`} }>
+                            <Button size="sm" variant="outline-info" type="submit" value="enviar">Dividas</Button>
+                            </Link>
+                            </th>
                            
-                           </th>
-                          <th> <Button variant="primary" type="submit" value="enviar">Submit</Button> </th>
 
                         </tr>
                     </tbody>

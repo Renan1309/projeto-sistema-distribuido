@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import axios from 'axios';
 import Navbar from './navbar'
-import { InputGroup ,Row ,  Form ,FormControl ,Card} from 'react-bootstrap';
+import {Button, InputGroup ,Row ,  Form ,FormControl ,Card} from 'react-bootstrap';
 
 
 
@@ -27,6 +27,11 @@ class VendaNova extends Component {
 
     enviaVenda(event){
       event.preventDefault();
+      console.log('deu certo')
+      console.log('ID:'+this.state.idusu )
+      console.log(`{cpf: "${this.state.idusu}" , data: "${this.state.date}" 
+      , valor: "${this.state.valor}"}`)
+      
       axios.post('http://localhost:7000/venda', {
         idusu: this.state.idusu,
         date: this.state.date,
@@ -67,22 +72,32 @@ class VendaNova extends Component {
        return (
            <>
              <div>
-             <Card>
+             <div className = "card-component"  >
+              
+             <Card className = "card-venda"  >
+               <h3 className = "h2venda">Nova Venda</h3>
                 <Row>
-                  
-                    <Col>
-                    <Card.Body>
-                    <Form.Control placeholder="Ex 21/08/2019" />
-                    </Card.Body>
+                   <Col>
+                       <Card.Body>
+                          <Form.Control id="cpf" onChange ={this.setIdusu} value = {this.state.idusu} placeholder="CPF: 00000000000" />
+                       </Card.Body>
                     </Col>
                     <Col>
-                    <Card.Body>
-                    <Form.Control placeholder="R$ 0,00" />
-                    </Card.Body>
+                       <Card.Body>
+                          <Form.Control id="date" onChange ={this.setDate} value = {this.state.date} placeholder="Ex 21/08/2019" />
+                       </Card.Body>
                     </Col>
-                   
-                </Row>
+                    <Col>
+                      <Card.Body>
+                         <Form.Control  id="date" onChange ={this.setValor} value = {this.state.valor} placeholder="R$ 0,00" />
+                      </Card.Body>                   
+                    </Col>
+                   </Row>
+                   <Button onClick={this.enviaVenda }  variant="primary">Enviar</Button>
                 </Card>
+                </div>
+
+                
              </div>
        
            </>
