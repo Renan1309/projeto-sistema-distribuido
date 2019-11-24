@@ -18,9 +18,10 @@ class Navbarpage extends Component {
             <Navbar bg="dark" variant="dark">
               <Navbar.Brand href="/clientes">Fia.do</Navbar.Brand>
               <Nav className="mr-auto">
-                <Nav.Link><Link to="/cadastro">Cadastro</Link></Nav.Link>
-                <Nav.Link> <Link to="/clientes">Clientes</Link></Nav.Link>
-                <Nav.Link> <Link to="/venda">Venda</Link></Nav.Link>
+                <Nav.Link> <Link className="a" to="/cadastro">Cadastro</Link></Nav.Link>
+                <Nav.Link> <Link className="a" to="/clientes">Clientes</Link></Nav.Link>
+                <Nav.Link> <Link className="a" to="/venda">Venda</Link></Nav.Link>
+                <Nav.Link> <Link className="a" to="/login">Login</Link></Nav.Link>
               </Nav>
               <Form inline>
                 <Button variant="outline-light">Logout</Button>

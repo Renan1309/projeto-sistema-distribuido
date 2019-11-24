@@ -43,3 +43,27 @@
   padding: 15px;
   margin-left: 10px;
 }
+
+.card{
+  width: 40%;
+}
+
+.text-title-card{
+  text-align: center;
+}
+
+.login-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+.a{
+  color: white;
+  text-decoration: none;
+}
+
+.a:focus{
+  color: white;
+  text-decoration: none;
+}
