@@ -3,8 +3,6 @@ import axios from 'axios';
 import Navbar from './navbar'
 import {Button, InputGroup ,Row ,  Form ,FormControl ,Card} from 'react-bootstrap';
 
-
-
 import Col from 'react-bootstrap/Col';
 import '../App.css';
 
@@ -24,6 +22,7 @@ class VendaNova extends Component {
 
 
       }
+     
 
     enviaVenda(event){
       event.preventDefault();
@@ -35,7 +34,13 @@ class VendaNova extends Component {
       axios.post('http://localhost:7000/venda', {
         idusu: this.state.idusu,
         date: this.state.date,
-        valor: this.state.valor
+        valor: this.state.valor,
+        
+      }, {
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5ODkxMDExIiwiaWF0IjoxNTc1MjU3Njk2LCJleHAiOjE1NzU4NjI0OTZ9.98H7SahCJcBc2yXGpSsH-ijC40b75XG3ktMP29uAxhQ'
+        }
       })
       .then(function (response) {
         console.log(response);
@@ -49,10 +54,7 @@ class VendaNova extends Component {
       this.setState({idusu: '' , date:'', valor: ''} );
       
       console.log("Deu certo a venda")
-     
-    
-
-    }
+     }
 
     setIdusu(evento){
         this.setState({idusu:evento.target.value});
@@ -65,6 +67,7 @@ class VendaNova extends Component {
       setValor(evento){
         this.setState({valor:evento.target.value});
       }
+     
 
     render(){
       

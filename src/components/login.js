@@ -16,12 +16,12 @@ class LoginComponent extends Component {
 
     enviaForm(event){
       event.preventDefault();
-      axios.post('https://localhost:7000/autentica', {
+      axios.post('http://localhost:7000/autentica', {
         email: this.state.user,
         senha: this.state.pwd
       })
       .then(function (response) {
-        console.log("Esse é o response:" + response);
+        console.log("Esse é o response:   " + response.data.token);
         //alert("Empresa Cadastrado");
         
       })
