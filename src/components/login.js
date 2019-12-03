@@ -2,34 +2,40 @@ import React , { Component } from 'react';
 import axios from 'axios';
 import { Form, Button, Card, FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import '../App.css';
-
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
 class LoginComponent extends Component {
-   
-    constructor() {
-        super();
-        this.state = {user:'',pwd:''};
+
+    constructor(props) {
+        super(props);
+        this.state = {user:'',pwd:'' , msg: '' , redirect: false };
         this.enviaForm = this.enviaForm.bind(this);
         this.setUser = this.setUser.bind(this);
         this.setSenha = this.setSenha.bind(this);
       }
 
     enviaForm(event){
+      
+      this.setState({ redirect: true })
       event.preventDefault();
-      axios.post('http://localhost:7000/autentica', {
+      axios.post('http://localhost:5000/autentica', {
         email: this.state.user,
         senha: this.state.pwd
       })
       .then(function (response) {
+       // this.props.history.push('/cadastro');
         console.log("Esse é o response:   " + response.data.token);
+        localStorage.setItem('auth-token', response.data.token);
+        this.setState({user: '' , pwd: ''} );
+        this.props.history.push("/cadastro");
         //alert("Empresa Cadastrado");
         
-      })
+      }.bind(this))
       .catch(function (error) {
         console.log(error);
       });
 
-      this.setState({user: '' , pwd: ''} );
+      
       
       console.log("deu certo o form")
       console.log(this.state.user);
@@ -37,6 +43,7 @@ class LoginComponent extends Component {
     
 
     }
+    
 
     setUser(evento){
     this.setState({user:evento.target.value});

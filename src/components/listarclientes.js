@@ -17,7 +17,7 @@ class Listaclientes extends Component {
         axios.get('http://localhost:7000/clientes',{
           headers:{
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5ODkxMDExIiwiaWF0IjoxNTc1MjU3Njk2LCJleHAiOjE1NzU4NjI0OTZ9.98H7SahCJcBc2yXGpSsH-ijC40b75XG3ktMP29uAxhQ'
+            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
           }
         }
         )
