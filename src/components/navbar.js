@@ -11,6 +11,11 @@ class Navbarpage extends Component {
     
        
     };
+    // Verificar se ainda funciona
+    logout(){
+      localStorage.setItem('auth-token', '');
+    }
+
     render(){
 
         return(
@@ -24,7 +29,7 @@ class Navbarpage extends Component {
                 <Nav.Link> <Link className="a" to="/login">Login</Link></Nav.Link>
               </Nav>
               <Form inline>
-                <Button variant="outline-light">Logout</Button>
+                <Button onClick={()=> this.logout()} variant="outline-light">Logout</Button>
               </Form>  
             </Navbar>
           </>

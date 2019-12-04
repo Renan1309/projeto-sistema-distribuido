@@ -32,6 +32,31 @@ class Listaclientes extends Component {
         })
 
     }
+    // Verificar se ainda funciona
+    excluirCliente(idCpf){
+      axios.put('http://localhost:7000/deletarCliente',{
+        cpf: this.props.location.cpf 
+      })
+      .then(function (response){
+
+        axios.get('http://localhost:7000/clientes',{
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
+          }
+        }
+        )
+        .then(function (response) {
+          // handle success
+          console.log(response.data);
+          this.setState({listclient:response.data})
+        }.bind(this))
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+      })
+    }
     render(){
       let idcpf ;
 
@@ -55,13 +80,16 @@ class Listaclientes extends Component {
                            <th > {client.cliente_nome}</th>
                            <th>{client.cliente_email}</th>
                            <th>{client.cliente_cpf}</th>
-                          <th> 
-                          <Link to={{pathname : "/dividas",
+                           <th> 
+                            <Link to={{pathname : "/dividas",
                                      id: `${client.cliente_cpf}`,
                                      nome: `${client.cliente_nome}`} }>
                             <Button size="sm" variant="outline-info" type="submit" value="enviar">Dividas</Button>
                             </Link>
-                            </th>
+                           </th>
+                           <th>
+                             <Button onClick={() =>this.excluirCliente(client.cliente_cpf)} size="sm" variant="outline-info" type="submit" value="enviar">Excluir</Button>
+                           </th>
                            
 
                         </tr>

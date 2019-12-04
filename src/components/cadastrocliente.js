@@ -79,14 +79,14 @@ class Cadastrocliente extends Component {
        return (
            <>
       
-       <div>
+       <div className="texto-cadastro">
        <h1>CADASTRO DE CLIENTES</h1>
            <p>{this.state.nome}</p>
            <p>{this.state.email}</p>
            <p>{this.state.senha}</p>
        </div>
        <Form className="cadastro-form" onSubmit = {this.enviaForm}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group className="group" controlId="formBasicEmail">
           <Form.Label>Nome Cliente</Form.Label>
           <Form.Control id="nome" onChange ={this.setNome} value = {this.state.nome} type="text" placeholder="Nome empresa" />
           <Form.Label>CPF</Form.Label>
@@ -98,7 +98,7 @@ class Cadastrocliente extends Component {
           <Form.Label>Senha</Form.Label>
           <Form.Control id="Senha"  onChange ={this.setSenha} value = {this.state.senha} type="password" placeholder="password" /><br/>
           <Button variant="primary" type="submit" value="enviar">Submit</Button> 
-      </Form.Group>
+          </Form.Group>
        </Form>
        
 
