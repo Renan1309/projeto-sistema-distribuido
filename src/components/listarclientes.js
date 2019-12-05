@@ -6,12 +6,14 @@ import axios from 'axios';
 
 
 class Listaclientes extends Component {
-    state = {
-        
-        listclient: [ ]
-       
+  constructor() {
+    super();
+    this.excluirCliente = this.excluirCliente.bind(this);
+    this.state = {
+      listclient : [ ]
+      
     };
-    
+  }
     componentDidMount(){
         console.log('Entrou no DID MOUNT');
         axios.get('http://localhost:7000/clientes',{
@@ -33,28 +35,43 @@ class Listaclientes extends Component {
 
     }
     // Verificar se ainda funciona
-    excluirCliente(idCpf){
-      axios.put('http://localhost:7000/deletarCliente',{
-        cpf: this.props.location.cpf 
-      })
-      .then(function (response){
-
-        axios.get('http://localhost:7000/clientes',{
-          headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
-          }
+    excluirCliente(cpf){
+      console.log(cpf);
+      axios.put (`http://localhost:7000/deletarCliente`, {
+        cpf: cpf,
+        
+      }, {
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
         }
-        )
-        .then(function (response) {
-          // handle success
-          console.log(response.data);
-          this.setState({listclient:response.data})
-        }.bind(this))
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
+      })
+      .then(function (response) {
+        // handle success
+        console.log(response.data);
+      axios.get(`http://localhost:7000/clientes`, {
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
+        }
+      })
+      .then(function (response) {
+        // handle success
+        console.log(response.data);
+        this.setState({listclient:response.data})
+      
+      }.bind(this))
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+
+       // this.setState({listdividascliente:response.data})
+      
+      }.bind(this))
+      .catch(function (error) {
+        // handle error
+        console.log(error);
       })
     }
     render(){

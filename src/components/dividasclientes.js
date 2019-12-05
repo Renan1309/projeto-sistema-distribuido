@@ -17,7 +17,13 @@ class DividasCliente extends Component {
   }
     componentDidMount() {
         console.log("CPF : " + this.props.location.id );
-        axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}`)
+        axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}` ,
+        {
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
+          }
+        })
         .then(function (response) {
           // handle success
           console.log(response.data);
@@ -37,11 +43,22 @@ class DividasCliente extends Component {
           idvenda: idvenda,
           cpf: this.props.location.cpf,
           valor: this.state.valor
+        }, {
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
+          }
         })
         .then(function (response) {
           // handle success
           console.log(response.data);
-          axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}`)
+        axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}`,
+        {
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
+          }
+        })
         .then(function (response) {
           // handle success
           console.log(response.data);

@@ -7,13 +7,16 @@ import { Navbar, Nav, Button , Form , FormControl , Image , NavLink} from 'react
 
 
 class Navbarpage extends Component {
-    state = {
-    
-       
-    };
+  constructor(props) {
+    super(props);
+    this.state = { };
+    this.logout = this.logout.bind(this);
+   
+  }
     // Verificar se ainda funciona
-    logout(){
+    logout = event => { 
       localStorage.setItem('auth-token', '');
+      this.props.history.push("/login");
     }
 
     render(){
