@@ -17,7 +17,7 @@ class DividasCliente extends Component {
   }
     componentDidMount() {
         console.log("CPF : " + this.props.location.id );
-        axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}` ,
+        axios.get(`https://appfabiosd.herokuapp.com/vendas?cpf=${this.props.location.id}` ,
         {
           headers:{
             'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ class DividasCliente extends Component {
       quitarVenda(idvenda){
       
           console.log(idvenda);
-        axios.put (`http://localhost:7000/deletarVenda`, {
+        axios.put (`https://appfabiosd.herokuapp.com/deletarVenda`, {
           idvenda: idvenda,
           cpf: this.props.location.cpf,
           valor: this.state.valor
@@ -52,7 +52,7 @@ class DividasCliente extends Component {
         .then(function (response) {
           // handle success
           console.log(response.data);
-        axios.get(`http://localhost:7000/vendas?cpf=${this.props.location.id}`,
+        axios.get(`https://appfabiosd.herokuapp.com/vendas?cpf=${this.props.location.id}`,
         {
           headers:{
             'Content-Type': 'application/json',

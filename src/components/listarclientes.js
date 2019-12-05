@@ -16,7 +16,7 @@ class Listaclientes extends Component {
   }
     componentDidMount(){
         console.log('Entrou no DID MOUNT');
-        axios.get('http://localhost:7000/clientes',{
+        axios.get('https://appfabiosd.herokuapp.com/clientes',{
           headers:{
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
@@ -37,7 +37,7 @@ class Listaclientes extends Component {
     // Verificar se ainda funciona
     excluirCliente(cpf){
       console.log(cpf);
-      axios.put (`http://localhost:7000/deletarCliente`, {
+      axios.put (`https://appfabiosd.herokuapp.com/deletarCliente`, {
         cpf: cpf,
         
       }, {
@@ -49,7 +49,7 @@ class Listaclientes extends Component {
       .then(function (response) {
         // handle success
         console.log(response.data);
-      axios.get(`http://localhost:7000/clientes`, {
+      axios.get(`https://appfabiosd.herokuapp.com/clientes`, {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('auth-token')}`
@@ -88,7 +88,7 @@ class Listaclientes extends Component {
                     <th>Email</th>
                     <th>CPF</th>
                     <th>Dividas</th>
-                  
+                    <th>Deletar</th>
                   </tr>
                 </thead>
                    { this.state.listclient.map(client =>

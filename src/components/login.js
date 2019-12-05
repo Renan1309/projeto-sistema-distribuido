@@ -18,7 +18,7 @@ class LoginComponent extends Component {
       
       this.setState({ redirect: true })
       event.preventDefault();
-      axios.post('http://localhost:5000/autentica', {
+      axios.post('http://18.218.154.150:5000/autentica', {
         email: this.state.user,
         senha: this.state.pwd
       })

@@ -31,7 +31,7 @@ class VendaNova extends Component {
       console.log(`{cpf: "${this.state.idusu}" , data: "${this.state.date}" 
       , valor: "${this.state.valor}"}`)
       
-      axios.post('http://localhost:7000/venda', {
+      axios.post('https://appfabiosd.herokuapp.com/venda', {
         idusu: this.state.idusu,
         date: this.state.date,
         valor: this.state.valor,

@@ -25,7 +25,7 @@ class Cadastrocliente extends Component {
 
     enviaForm(event){
       event.preventDefault();
-      axios.post('http://localhost:7000/cliente', {
+      axios.post('https://appfabiosd.herokuapp.com/cliente', {
         nome: this.state.nome,
         email: this.state.email,
         senha: this.state.senha,
